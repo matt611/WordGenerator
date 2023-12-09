@@ -4,6 +4,7 @@ import { generateWords } from './WordGenerator';
 import { TrieNode } from './TrieNode';
 
 const DEFAULT_DICTIONARY_PATH = './resources/2of12inf.txt';
+
 /**
  * Reads all the words from a file and inserts them into a new trie.
  * The file should contain all the words on their own line.
@@ -21,6 +22,7 @@ const buildTrieDictionaryFile = async (filename: string): Promise<TrieNode> => {
 
   const rootNode = new TrieNode();
 
+  // iterate through the file stream and add each word to the trie.
   for await (const line of rl) {
     const word = line.trim();
     rootNode.addWord(word);
