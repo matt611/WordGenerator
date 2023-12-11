@@ -1,5 +1,5 @@
 import { TrieNode } from '../src/TrieNode';
-import { generateWords } from '../src/WordGenerator';
+import { generateWordsFromTrie } from '../src/WordGenerator';
 
 const DICTIONARY = [
   'good',
@@ -22,14 +22,14 @@ describe('WordGenerator', () => {
   });
 
   it('should generate the correct words from a list of valid characters', () => {
-    const results = generateWords('oogd', dictTrieRoot);
+    const results = generateWordsFromTrie('oogd', dictTrieRoot);
     const expectedResults = ['do', 'dog', 'go', 'god', 'goo', 'good'];
 
     expect(results.sort()).toStrictEqual(expectedResults);
   });
 
   it('should return an empty list if no words are possible form character set', () => {
-    const results = generateWords('wxyz', dictTrieRoot);
+    const results = generateWordsFromTrie('wxyz', dictTrieRoot);
     expect(results).toStrictEqual([]);
   });
 });

@@ -1,6 +1,6 @@
 # Word Generator App
 
-This is a command line app to generate all the possible english words from a string of charaters.
+This is a command line app to generate all the possible english words from a string of characters.
 
 ## Usage
 
@@ -18,7 +18,7 @@ tsc; node dist/src/index.js oogd ./resources/2of12inf.txt
 ## Tests
 
 Tests at this point are very rudimentary and have lots of opportunities for improvement.
-Unit test use the Jest framework. Running the tests and generating a coverage report can be done with this command:
+Unit tests use the Jest framework. Running the tests and generating a coverage report can be done with this command:
 
 ```
 npm run test
@@ -27,6 +27,15 @@ npm run test
 ## Assumptions
 
 The algorithm assumes that the dictionary will be large and the list of characters will be small. It assumes that checking if a word exists in the dictionary will be the bottle neck and that iterating over the different combinations of letters will be trivial. There is room for optimization in the code that iterates over the letter combinations.
+
+## Code Walk Through
+
+The CLI entry point is the src/index.js file. This code just makes it easier to quickly execute the code and see the results.
+
+If this code were to be used as a library, the generateWords function from the WordGenerator.ts file would be the entry point.
+
+The generateWords function takes a string of letters and an optional path to a dictionary file as parameters. The list of words in the dictionary is converted to a
+trie. Then the findWords function is called recursively to iterate through all possible combinations of the letters, referencing the dictionary trie as it goes to check for valid words. Valid words are added to the accumulator which will eventually be returned as the result.
 
 ## Dictionaries
 
